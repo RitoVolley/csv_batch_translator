@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import filedialog
-import os
 import material.run_translate as run_translate
 import material.demo_runner as demo_runner
 import material.api_register as api_register
@@ -14,33 +13,33 @@ def use_screen_operation():
     """
     root = tk.Tk()
     root.title("CSV一括翻訳ツール")
-    root.geometry("400x150")
+    root.geometry("500x150")
     root.resizable(False, False) # ウィンドウサイズ固定
 
-    # 上部のボタン（横並び）
+    # 上部のボタン行
     top_button_frame = tk.Frame(root)
     top_button_frame.pack(pady=(5, 0), fill=tk.X)
 
     demo_button = tk.Button(top_button_frame, text="デモ実行", command=run_demo_callback)
     demo_button.pack(side=tk.LEFT, padx=5)
 
-    api_register_button = tk.Button(top_button_frame, text="API登録画面へ遷移", command=lambda: api_register.open_api_register_window(root))
+    api_register_button = tk.Button(top_button_frame, text="API登録", command=lambda: api_register.open_api_register_window(root))
     api_register_button.pack(side=tk.LEFT, padx=5)
 
     # ファイルパス入力行
     execute_frame = tk.Frame(root)
     execute_frame.pack(pady=10, fill=tk.X)
     
-    label = tk.Label(execute_frame, text="ファイルパス：")
+    label = tk.Label(execute_frame, text="ファイルパス")
     label.pack(side=tk.LEFT)
     
-    entry = tk.Entry(execute_frame, width=40)
+    entry = tk.Entry(execute_frame, width=30)
     entry.pack(side=tk.LEFT, padx=5, fill=tk.X, expand=True)
 
-    file_select_button = tk.Button(execute_frame, text="ファイル選択", command=lambda: select_file(entry))
+    file_select_button = tk.Button(execute_frame, text="選択", command=lambda: select_file(entry))
     file_select_button.pack(side=tk.LEFT, padx=5)
 
-    # 実行ボタン（下の行、右端）
+    # 実行ボタン
     action_frame = tk.Frame(root)
     action_frame.pack(fill=tk.X, pady=(5, 0))
     run_button = tk.Button(action_frame, text="実行", command=lambda: run_translation_callback(entry))
